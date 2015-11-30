@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
   s.authors                = ["Marc-Andre Gatien"]
   s.email                  = '<m.gatien@gmail.com>'
   s.homepage               = 'https://github.com/sensu-plugins/sensu-plugins-ipvs'
-  s.summary                = ''
-  s.description            = ''
+  s.summary                = 'Sensu plugins to get stats of ipvs'
+  s.description            = 'This plugin provides metrics for ipvs based on `/proc/net/ip_vs_stats`.'
   s.license                = 'MIT'
   s.date                   = Date.today.to_s
   s.files                  = Dir.glob('{bin,lib}/**/*') + %w(LICENSE README.md CHANGELOG.md)
@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.platform               = Gem::Platform::RUBY
   s.required_ruby_version  = '>= 1.9.3'
 
+  s.add_runtime_dependency 'sensu-plugin',      '1.2.0'
   s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'rubocop', '~> 0.17.0'
   s.add_development_dependency 'rspec', '~> 3.1'
