@@ -27,17 +27,20 @@
 require 'sensu-plugin/metric/cli'
 require 'socket'
 
+#
+#
+#
 class Graphite < Sensu::Plugin::Metric::CLI::Graphite
   option :scheme,
-    description: 'Metric naming scheme, text to prepend to metric',
-    short: '-s SCHEME',
-    long: '--scheme SCHEME',
-    default: "#{Socket.gethostbyname("#{Socket.gethostname}").first}.ipvs.stats"
+         description: 'Metric naming scheme, text to prepend to metric',
+         short: '-s SCHEME',
+         long: '--scheme SCHEME',
+         default: "#{Socket.gethostbyname("#{Socket.gethostname}").first}.ipvs.stats"
 
   def run
-    if !ipvs_output.nil?
+    unless ipvs_output.nil?
       ipvs = metrics_hash(ipvs_output)
-      metrics = [ "TotalConn", "IncomingPkts", "OutgoingPkts", "IncomingBytes", "OutgoingBytes", "Conns_per_sec", "Pkts_per_sec", "IncomingBytes_per_sec", "OutgoingBytes_per_sec" ]
+      metrics = ['TotalConn','IncomingPkts','OutgoingPkts','IncomingBytes','OutgoingBytes','Conns_per_sec','Pkts_per_sec','IncomingBytes_per_sec','OutgoingBytes_per_sec']
       c = 0
       metrics.each do |parent|
         output [config[:scheme], parent].join('.'), ipvs[c].hex
@@ -48,7 +51,7 @@ class Graphite < Sensu::Plugin::Metric::CLI::Graphite
   end
 
   def metrics_hash(output)
-    ipvs = Array.new
+    ipvs = []
     output.each_line do |line|
       line.chomp!
       next if line.empty? || !(line.split & ipvs).empty?
@@ -59,7 +62,7 @@ class Graphite < Sensu::Plugin::Metric::CLI::Graphite
 
   def ipvs_output
     if File.exists?('/proc/net/ip_vs_stats')
-      output=`cat /proc/net/ip_vs_stats | egrep -v "Total|Conns"`
+      output = `cat /proc/net/ip_vs_stats | egrep -v "Total|Conns"`
     end
   end
 end
