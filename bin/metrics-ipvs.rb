@@ -41,14 +41,14 @@ class Graphite < Sensu::Plugin::Metric::CLI::Graphite
     unless ipvs_output.nil?
       ipvs = metrics_hash(ipvs_output)
       metrics = %w(TotalConn
-        IncomingPkts
-        OutgoingPkts
-        IncomingBytes
-        OutgoingBytes
-        Conns_per_sec
-        Pkts_per_sec
-        IncomingBytes_per_sec
-        OutgoingBytes_per_sec)
+                   IncomingPkts
+                   OutgoingPkts
+                   IncomingBytes
+                   OutgoingBytes
+                   Conns_per_sec
+                   Pkts_per_sec
+                   IncomingBytes_per_sec
+                   OutgoingBytes_per_sec)
       c = 0
       metrics.each do |parent|
         output [config[:scheme], parent].join('.'), ipvs[c].hex
