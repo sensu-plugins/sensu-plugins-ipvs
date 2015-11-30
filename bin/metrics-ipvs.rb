@@ -69,7 +69,7 @@ class Graphite < Sensu::Plugin::Metric::CLI::Graphite
   end
 
   def ipvs_output
-    if File.exists?('/proc/net/ip_vs_stats')
+    unless File.exist?('/proc/net/ip_vs_stats')
       return `cat /proc/net/ip_vs_stats | egrep -v "Total|Conns"`
     end
   end
