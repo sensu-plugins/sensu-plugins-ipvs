@@ -35,7 +35,7 @@ class Graphite < Sensu::Plugin::Metric::CLI::Graphite
          description: 'Metric naming scheme, text to prepend to metric',
          short: '-s SCHEME',
          long: '--scheme SCHEME',
-         default: "#{Socket.gethostbyname("#{Socket.gethostname}").first}.ipvs.stats"
+         default: "#{Socket.gethostbyname(Socket.gethostname.to_s).first}.ipvs.stats"
 
   def run
     unless ipvs_output.nil?

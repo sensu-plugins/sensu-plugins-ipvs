@@ -1,7 +1,1 @@
-#
-# Set gem version
-#
-module SensuPluginsIpvs
-  # Gem version
-  VERSION = '0.0.1'
-end
+require 'sensu-plugins-ipvs/version'
