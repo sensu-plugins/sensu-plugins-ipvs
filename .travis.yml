@@ -22,7 +22,7 @@ script:
 deploy:
   provider: rubygems
   api_key:
-    secure: Hml2ER8xxT9vL2vOAigAWvHh/8PfmaW1bkgpcnxJte6H9VeEfD6Cey+NdHIh7iqfoU5JwxT5a+HiBLmpxQt8jvSLwe9hzLHsuwXSpaEx0dGwVehK8OJNJDvnYpxnsbR8GxlvShY/Rgse6f5qrvK33rwAsE3kavtGpYY5T3Tux0I=
+    secure: TBHGPkwzKEPG8NaIncOJbbKCKcJJX1PLSqarsYchRkm9bvKhTwOLP1ce43RhdqWCECgeHvuFzb5VMcqMqfiBnSFf6jNNXSXI5xTKCBQBkbasS0dTDfoinnpqwQ8BH7qyh2g+jRCZjslbUaOvuDcGeK7FurHIx1a6aAOXfL0gTps=
   gem: sensu-plugins-ipvs
   on:
     tags: true
